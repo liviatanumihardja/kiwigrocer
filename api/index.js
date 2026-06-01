@@ -21,7 +21,6 @@ app.post("/api/submit-price", async (req, res) => {
   if (!product_id || !store_id || !price || !location) {
     return res.status(400).json({ error: "Missing required fields." });
   }
-
   try {
     // Standard Postgres query syntax using $1, $2 instead of ?
     const result = await pool.query(`
