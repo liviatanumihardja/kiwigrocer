@@ -4,7 +4,7 @@
 
 const express = require("express");
 const cors    = require("cors");
-const db      = require("./database");
+const db      = require("../database");
 
 const app  = express();
 const PORT = 3000;
@@ -128,7 +128,4 @@ app.get("/api/recent", (req, res) => {
 
 // ── Start ────────────────────────────────────────────────────────────────────
 
-app.listen(PORT, () => {
-  console.log(`\n🥝  KiwiGrocer running at http://localhost:${PORT}`);
-  console.log(`    Serving index.html and API from the same server.\n`);
-});
+module.exports = app;
