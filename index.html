@@ -10,23 +10,20 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --pak:      #F5C800;
-      --pak-dark: #7A6200;
-      --wool:     #1B7A36;
-      --nw:       #D41231;
-
-      --bg:       #F7F5F0;
-      --surface:  #FFFFFF;
-      --border:   rgba(0,0,0,0.09);
-      --text:     #1A1A18;
-      --muted:    #6B6B65;
-      --best:     #1B7A36;
-      --best-bg:  #E6F4EB;
-      --best-border: #8DC9A0;
-
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
+      --pak:        #F5C800;
+      --wool:       #1B7A36;
+      --nw:         #D41231;
+      --bg:         #F7F5F0;
+      --surface:    #FFFFFF;
+      --border:     rgba(0,0,0,0.09);
+      --text:       #1A1A18;
+      --muted:      #6B6B65;
+      --best:       #1B7A36;
+      --best-bg:    #E6F4EB;
+      --best-border:#8DC9A0;
+      --radius-sm:  8px;
+      --radius-md:  14px;
+      --radius-lg:  20px;
     }
 
     body {
@@ -36,11 +33,11 @@
       min-height: 100vh;
     }
 
-    /* ── Header ── */
+    /* ─── Header ─────────────────────────────────────────────── */
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem 1.5rem;
+      padding: 1.5rem 2rem;
     }
 
     .header-inner {
@@ -48,7 +45,7 @@
       margin: 0 auto;
     }
 
-    /* ── Location bar ── */
+    /* ─── Location bar ───────────────────────────────────────── */
     .location-bar {
       display: flex;
       align-items: center;
@@ -66,15 +63,13 @@
     }
 
     .location-bar:hover { border-color: var(--best); }
-    .location-bar.editing { border-color: var(--best); box-shadow: 0 0 0 3px rgba(27,122,54,0.12); background: #fff; }
-
-    .location-pin {
-      color: var(--best);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
+    .location-bar.editing {
+      border-color: var(--best);
+      box-shadow: 0 0 0 3px rgba(27,122,54,0.12);
+      background: #fff;
     }
 
+    .location-pin { color: var(--best); flex-shrink: 0; display: flex; align-items: center; }
     .location-pin svg { width: 16px; height: 16px; }
 
     .location-label {
@@ -123,10 +118,8 @@
       flex-shrink: 0;
       transition: color 0.12s, background 0.12s;
     }
-
     .location-edit-btn:hover { color: var(--best); background: var(--best-bg); }
 
-    /* Location dropdown */
     .location-suggestions {
       display: none;
       position: absolute;
@@ -140,7 +133,6 @@
       z-index: 100;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
-
     .location-suggestions.visible { display: block; }
 
     .location-suggestion {
@@ -153,7 +145,6 @@
       transition: background 0.1s;
       color: var(--text);
     }
-
     .location-suggestion:hover { background: var(--best-bg); }
     .location-suggestion + .location-suggestion { border-top: 1px solid var(--border); }
 
@@ -164,7 +155,7 @@
       flex-shrink: 0;
     }
 
-    /* ── App name ── */
+    /* ─── App name ───────────────────────────────────────────── */
     .app-name {
       font-family: 'DM Serif Display', Georgia, serif;
       font-size: 2.4rem;
@@ -173,7 +164,6 @@
       color: var(--text);
       margin-bottom: 0.25rem;
     }
-
     .app-name em { font-style: italic; color: var(--best); }
 
     .header-sub {
@@ -182,24 +172,22 @@
       margin-bottom: 1.5rem;
     }
 
-    /* ── Search ── */
+    /* ─── Search ─────────────────────────────────────────────── */
     .search-wrap { position: relative; }
 
     .search-icon {
       position: absolute;
-      left: 16px;
-      top: 50%;
+      left: 16px; top: 50%;
       transform: translateY(-50%);
       color: var(--muted);
       pointer-events: none;
     }
-
     .search-icon svg { display: block; width: 18px; height: 18px; }
 
     #search-input {
       width: 100%;
       height: 52px;
-      padding: 0 48px 0 48px;
+      padding: 0 48px;
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
       font-family: 'DM Sans', sans-serif;
@@ -209,9 +197,7 @@
       outline: none;
       transition: border-color 0.15s, box-shadow 0.15s;
     }
-
     #search-input::placeholder { color: var(--muted); }
-
     #search-input:focus {
       border-color: var(--best);
       box-shadow: 0 0 0 3px rgba(27,122,54,0.12);
@@ -220,8 +206,7 @@
 
     .clear-btn {
       position: absolute;
-      right: 14px;
-      top: 50%;
+      right: 14px; top: 50%;
       transform: translateY(-50%);
       background: none;
       border: none;
@@ -232,11 +217,10 @@
       border-radius: 50%;
       line-height: 1;
     }
-
     .clear-btn:hover { color: var(--text); }
     .clear-btn.visible { display: flex; align-items: center; }
 
-    /* ── Category Pills ── */
+    /* ─── Category pills ─────────────────────────────────────── */
     .category-bar {
       max-width: 900px;
       margin: 1.25rem auto 0;
@@ -258,23 +242,17 @@
       transition: all 0.15s;
       white-space: nowrap;
     }
-
     .pill:hover { border-color: var(--best); color: var(--best); }
+    .pill.active { background: var(--best); border-color: var(--best); color: #fff; }
 
-    .pill.active {
-      background: var(--best);
-      border-color: var(--best);
-      color: #fff;
-    }
-
-    /* ── Main ── */
+    /* ─── Main ───────────────────────────────────────────────── */
     main {
       max-width: 900px;
       margin: 0 auto;
       padding: 2rem 2rem 4rem;
     }
 
-    /* ── Section labels ── */
+    /* ─── Section labels ─────────────────────────────────────── */
     .section-label {
       font-size: 11px;
       font-weight: 600;
@@ -284,7 +262,6 @@
       margin-bottom: 1rem;
     }
 
-    /* ── Product Grid ── */
     #results-section { margin-bottom: 2.5rem; }
 
     #results-count {
@@ -293,13 +270,35 @@
       margin-bottom: 1rem;
     }
 
+    /* ─── Loading overlay ────────────────────────────────────── */
+    #grid-loading {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    #grid-loading.visible { display: flex; }
+
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--best);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── Product grid ───────────────────────────────────────── */
     #product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 14px;
     }
 
-    /* ── Product Card ── */
+    /* ─── Product card ───────────────────────────────────────── */
     .product-card {
       background: var(--surface);
       border: 1.5px solid var(--border);
@@ -308,8 +307,6 @@
       cursor: pointer;
       transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
       animation: fadeUp 0.25s ease both;
-      position: relative;
-      overflow: hidden;
     }
 
     @keyframes fadeUp {
@@ -322,32 +319,19 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.07);
     }
-
     .product-card.selected {
       border-color: var(--best);
       box-shadow: 0 0 0 3px rgba(27,122,54,0.15);
     }
 
-    .card-emoji { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
-
+    .card-emoji  { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
     .card-category {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.25rem;
     }
-
-    .card-name {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.35;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-unit { font-size: 12px; color: var(--muted); margin-bottom: 0.85rem; }
+    .card-name   { font-size: 14px; font-weight: 500; line-height: 1.35; margin-bottom: 0.5rem; }
+    .card-unit   { font-size: 12px; color: var(--muted); margin-bottom: 0.85rem; }
 
     .card-price-row {
       display: flex;
@@ -362,29 +346,26 @@
     }
 
     .card-best-label {
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 11px; font-weight: 600;
       padding: 3px 8px;
       border-radius: 999px;
     }
-
     .card-best-label.pak  { background: #FFF7CC; color: #7A6200; border: 1px solid #E8C800; }
     .card-best-label.wool { background: var(--best-bg); color: #0E5C26; border: 1px solid #8DC9A0; }
     .card-best-label.nw   { background: #FDEAED; color: #A00E25; border: 1px solid #F4A0AE; }
 
-    /* ── Empty State ── */
+    /* ─── Empty state ────────────────────────────────────────── */
     #empty-state {
       display: none;
       text-align: center;
       padding: 4rem 1rem;
       color: var(--muted);
     }
-
     #empty-state .empty-emoji { font-size: 3rem; margin-bottom: 1rem; }
     #empty-state p { font-size: 15px; }
 
-    /* ── Comparison Panel ── */
-    #comparison-section { display: none; animation: fadeUp 0.3s ease; }
+    /* ─── Comparison panel ───────────────────────────────────── */
+    #comparison-section { display: none; animation: fadeUp 0.3s ease; margin-bottom: 2rem; }
     #comparison-section.visible { display: block; }
 
     .comparison-card {
@@ -410,7 +391,6 @@
       line-height: 1.2;
       margin-bottom: 0.2rem;
     }
-
     .comparison-item-meta { font-size: 13px; color: var(--muted); }
 
     .comparison-close {
@@ -418,8 +398,7 @@
       background: none;
       border: 1.5px solid var(--border);
       border-radius: 50%;
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       cursor: pointer;
       font-size: 18px;
       color: var(--muted);
@@ -429,14 +408,12 @@
       flex-shrink: 0;
       transition: border-color 0.15s, color 0.15s;
     }
-
     .comparison-close:hover { border-color: var(--text); color: var(--text); }
 
-    /* ── Store Columns ── */
+    /* ─── Store columns ──────────────────────────────────────── */
     .store-cols {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
     }
 
     .store-col {
@@ -444,7 +421,6 @@
       text-align: center;
       transition: background 0.12s;
     }
-
     .store-col + .store-col { border-left: 1px solid var(--border); }
     .store-col.best-price   { background: var(--best-bg); }
 
@@ -454,19 +430,15 @@
       display: inline-block;
       margin-bottom: 6px;
     }
-
     .store-col-dot.pak  { background: var(--pak); border: 1.5px solid #C9A300; }
     .store-col-dot.wool { background: var(--wool); }
     .store-col-dot.nw   { background: var(--nw); }
 
     .store-col-name {
-      font-size: 12px;
-      font-weight: 500;
+      font-size: 12px; font-weight: 500;
       color: var(--muted);
       margin-bottom: 0.5rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
     .store-col-price {
@@ -476,22 +448,19 @@
       display: block;
       margin-bottom: 0.5rem;
     }
-
     .store-col.best-price .store-col-price { color: var(--best); }
 
     .best-badge {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 11px; font-weight: 600;
       color: var(--best);
       background: #fff;
       border: 1.5px solid var(--best-border);
       border-radius: 999px;
       padding: 2px 9px;
     }
-
     .best-badge svg { width: 10px; height: 10px; }
 
     .you-save {
@@ -501,42 +470,18 @@
       color: var(--best);
     }
 
-    /* ── Community & Submit sections ── */
-    .community-section, .submit-section {
+    /* ─── Submit section ─────────────────────────────────────── */
+    .submit-section {
       border-top: 1px solid var(--border);
       padding: 1.1rem 1.75rem;
     }
 
-    .community-label {
-      font-size: 12px;
-      font-weight: 600;
+    .submit-label {
+      font-size: 12px; font-weight: 600;
       color: var(--muted);
       margin-bottom: 0.75rem;
     }
 
-    .community-loading { font-size: 13px; color: var(--muted); }
-
-    .community-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      padding: 5px 0;
-      border-bottom: 1px solid var(--border);
-      gap: 8px;
-    }
-
-    .community-row:last-child { border-bottom: none; }
-
-    .community-store { font-weight: 500; color: var(--text); }
-
-    .community-price { font-weight: 600; color: var(--best); }
-
-    .community-date { font-size: 11px; color: var(--muted); white-space: nowrap; }
-
-    .community-empty { font-size: 13px; color: var(--muted); font-style: italic; }
-
-    /* Submit form */
     .submit-form {
       display: flex;
       gap: 8px;
@@ -557,26 +502,16 @@
       padding: 0 10px;
       transition: border-color 0.15s;
     }
-
     .submit-form select:focus,
     .submit-form input:focus { border-color: var(--best); background: #fff; }
-
     .submit-form select { flex: 1; min-width: 130px; }
 
-    .price-input-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
+    .price-input-wrap { position: relative; display: flex; align-items: center; }
     .price-dollar {
-      position: absolute;
-      left: 10px;
-      font-size: 14px;
-      color: var(--muted);
+      position: absolute; left: 10px;
+      font-size: 14px; color: var(--muted);
       pointer-events: none;
     }
-
     #submit-price { width: 90px; padding-left: 22px; }
 
     #submit-btn {
@@ -587,39 +522,33 @@
       border: none;
       border-radius: var(--radius-sm);
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 14px; font-weight: 600;
       cursor: pointer;
       transition: opacity 0.15s;
       white-space: nowrap;
     }
-
-    #submit-btn:hover { opacity: 0.88; }
+    #submit-btn:hover    { opacity: 0.88; }
     #submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .submit-feedback {
-      font-size: 13px;
-      margin-top: 6px;
-      min-height: 18px;
-    }
-
+    .submit-feedback { font-size: 13px; margin-top: 6px; min-height: 18px; }
     .submit-feedback.success { color: var(--best); }
     .submit-feedback.error   { color: var(--nw); }
 
-    /* ── Responsive ── */
+    /* ─── Responsive ─────────────────────────────────────────── */
     @media (max-width: 600px) {
       .app-name { font-size: 1.8rem; }
       #product-grid { grid-template-columns: repeat(2, 1fr); }
       .store-col { padding: 1rem 0.75rem; }
+      .store-col-price { font-size: 1.35rem; }
       .comparison-header { padding: 1.25rem; }
-      .savings-footer { padding: 1rem 1.25rem; }
+      .submit-section { padding: 1rem 1.25rem; }
       .location-bar { min-width: 0; width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Header ── -->
+  <!-- ─── Header ──────────────────────────────────────────────── -->
   <header>
     <div class="header-inner">
 
@@ -633,73 +562,61 @@
         </span>
         <span class="location-label">Your area</span>
         <span id="location-display">Auckland, Auckland</span>
-        <input id="location-input" type="text" placeholder="Enter your suburb or city…" autocomplete="off" />
+        <input id="location-input" type="text" placeholder="Enter suburb or city…" autocomplete="off" />
         <button class="location-edit-btn" id="location-edit-btn" aria-label="Change location">Change</button>
-
-        <!-- Suggestions dropdown -->
         <div class="location-suggestions" id="location-suggestions" role="listbox"></div>
       </div>
 
       <h1 class="app-name">Kiwi<em>Grocer</em></h1>
       <p class="header-sub">Helping Kiwis save money by comparing grocery prices near you.</p>
 
+      <!-- Search -->
       <div class="search-wrap">
         <span class="search-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </span>
-        <input
-          id="search-input"
-          type="text"
-          placeholder="Search for milk, bread, eggs…"
-          autocomplete="off"
-          aria-label="Search for grocery items"
-        />
+        <input id="search-input" type="text" placeholder="Search for milk, bread, eggs…" autocomplete="off" aria-label="Search grocery items" />
         <button class="clear-btn" id="clear-btn" aria-label="Clear search">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
       </div>
+
     </div>
   </header>
 
-  <!-- ── Category Pills ── -->
-  <nav class="category-bar" aria-label="Filter by category">
+  <!-- ─── Category pills ──────────────────────────────────────── -->
+  <nav class="category-bar" id="category-bar" aria-label="Filter by category">
     <button class="pill active" data-category="All">All</button>
   </nav>
 
-  <!-- ── Main ── -->
+  <!-- ─── Main ────────────────────────────────────────────────── -->
   <main>
 
-    <!-- Comparison panel -->
+    <!-- Comparison panel (hidden until a card is clicked) -->
     <section id="comparison-section" aria-label="Price comparison">
       <p class="section-label">Price Comparison</p>
       <div class="comparison-card">
+
         <div class="comparison-header">
-          <span class="comparison-header-emoji" id="comp-emoji">🥛</span>
-          <div class="comparison-header-info">
-            <p class="comparison-item-name" id="comp-name">Item Name</p>
-            <p class="comparison-item-meta" id="comp-meta">Unit · Category</p>
+          <span class="comparison-header-emoji" id="comp-emoji"></span>
+          <div>
+            <p class="comparison-item-name" id="comp-name"></p>
+            <p class="comparison-item-meta" id="comp-meta"></p>
           </div>
-          <button class="comparison-close" id="comparison-close" aria-label="Close comparison">✕</button>
+          <button class="comparison-close" id="comparison-close" aria-label="Close">✕</button>
         </div>
 
         <div class="store-cols" id="store-cols"></div>
 
-        <!-- Community prices from backend -->
-        <div class="community-section" id="community-section">
-          <p class="community-label">📍 Community prices near you</p>
-          <div id="community-prices">
-            <p class="community-loading">Loading community prices…</p>
-          </div>
-        </div>
-
-        <!-- Submit a price form -->
         <div class="submit-section">
-          <p class="community-label">🙌 Seen a different price in-store?</p>
-          <div class="submit-form" id="submit-form">
+          <p class="submit-label">🙌 Seen a different price in-store? Submit it:</p>
+          <div class="submit-form">
             <select id="submit-store">
               <option value="">Select store…</option>
               <option value="pak-n-save|Pak'nSave">Pak'nSave</option>
@@ -714,400 +631,522 @@
           </div>
           <p class="submit-feedback" id="submit-feedback"></p>
         </div>
+
       </div>
     </section>
 
-    <!-- Results section -->
+    <!-- Product grid -->
     <section id="results-section">
       <p class="section-label" id="results-label">All Products</p>
+      <div id="grid-loading">
+        <span class="spinner"></span>
+        <span id="loading-text">Loading prices for Auckland…</span>
+      </div>
       <p id="results-count"></p>
-      <div id="product-grid" role="list" aria-label="Products"></div>
+      <div id="product-grid" role="list"></div>
       <div id="empty-state" role="status" aria-live="polite">
         <div class="empty-emoji">🔍</div>
-        <p>No products match "<span id="empty-query"></span>". Try another search.</p>
+        <p>No products match "<span id="empty-query"></span>".</p>
       </div>
     </section>
 
   </main>
 
   <script>
-    // ── Data ─────────────────────────────────────────────────────────────────
-    const DATA = {
-      stores: [
-        { id: "pak-n-save", name: "Pak'nSave", dotClass: "pak"  },
-        { id: "woolworths", name: "Woolworths", dotClass: "wool" },
-        { id: "new-world",  name: "New World",  dotClass: "nw"   }
-      ],
-      products: [
-        // ── Dairy & Eggs ──
-        { id:1,  name:"Anchor Full Cream Milk",        category:"Dairy & Eggs",  unit:"2L",       emoji:"🥛", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.19} },
-        { id:2,  name:"Anchor Trim Milk",              category:"Dairy & Eggs",  unit:"2L",       emoji:"🥛", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.19} },
-        { id:3,  name:"Free Range Eggs",               category:"Dairy & Eggs",  unit:"12 pack",  emoji:"🥚", prices:{"pak-n-save":7.49,"woolworths":8.49,"new-world":8.99} },
-        { id:4,  name:"Mainland Butter",               category:"Dairy & Eggs",  unit:"500g",     emoji:"🧈", prices:{"pak-n-save":5.99,"woolworths":6.49,"new-world":6.79} },
-        { id:5,  name:"Tasty Cheddar Cheese",          category:"Dairy & Eggs",  unit:"500g",     emoji:"🧀", prices:{"pak-n-save":6.49,"woolworths":7.49,"new-world":7.99} },
-        { id:6,  name:"Meadow Fresh Natural Yoghurt",  category:"Dairy & Eggs",  unit:"1kg",      emoji:"🫙", prices:{"pak-n-save":4.99,"woolworths":5.49,"new-world":5.99} },
-        // ── Bakery ──
-        { id:7,  name:"Tip Top White Sandwich Bread",  category:"Bakery",        unit:"700g",     emoji:"🍞", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.59} },
-        { id:8,  name:"Vogel's Mixed Grain Bread",     category:"Bakery",        unit:"720g",     emoji:"🍞", prices:{"pak-n-save":4.49,"woolworths":5.29,"new-world":5.49} },
-        { id:9,  name:"Bazaar Wraps",                  category:"Bakery",        unit:"8 pack",   emoji:"🫓", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.79} },
-        // ── Breakfast ──
-        { id:10, name:"Weet-Bix Cereal",               category:"Breakfast",     unit:"750g",     emoji:"🥣", prices:{"pak-n-save":4.49,"woolworths":5.29,"new-world":5.49} },
-        { id:11, name:"Sanitarium Up&Go",              category:"Breakfast",     unit:"6 pack",   emoji:"🥤", prices:{"pak-n-save":5.99,"woolworths":6.99,"new-world":7.29} },
-        { id:12, name:"Rolled Oats",                   category:"Breakfast",     unit:"1kg",      emoji:"🌾", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
-        // ── Fruit ──
-        { id:13, name:"Royal Gala Apples",             category:"Fruit",         unit:"per kg",   emoji:"🍎", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.99} },
-        { id:14, name:"Bananas",                       category:"Fruit",         unit:"per kg",   emoji:"🍌", prices:{"pak-n-save":1.99,"woolworths":2.49,"new-world":2.69} },
-        { id:15, name:"Strawberries",                  category:"Fruit",         unit:"250g punnet",emoji:"🍓",prices:{"pak-n-save":3.99,"woolworths":4.49,"new-world":4.99} },
-        { id:16, name:"Navel Oranges",                 category:"Fruit",         unit:"per kg",   emoji:"🍊", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.79} },
-        // ── Vegetables ──
-        { id:17, name:"Carrots",                       category:"Vegetables",    unit:"1kg bag",  emoji:"🥕", prices:{"pak-n-save":1.49,"woolworths":1.99,"new-world":2.19} },
-        { id:18, name:"Baby Spinach",                  category:"Vegetables",    unit:"120g",     emoji:"🥬", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
-        { id:19, name:"Broccoli",                      category:"Vegetables",    unit:"per head",  emoji:"🥦", prices:{"pak-n-save":2.49,"woolworths":2.79,"new-world":2.99} },
-        { id:20, name:"Agria Potatoes",                category:"Vegetables",    unit:"2kg bag",  emoji:"🥔", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.49} },
-        { id:21, name:"Iceberg Lettuce",               category:"Vegetables",    unit:"per head",  emoji:"🥗", prices:{"pak-n-save":1.99,"woolworths":2.49,"new-world":2.79} },
-        { id:22, name:"Tomatoes",                      category:"Vegetables",    unit:"per kg",   emoji:"🍅", prices:{"pak-n-save":3.99,"woolworths":4.49,"new-world":4.99} },
-        { id:23, name:"Brown Onions",                  category:"Vegetables",    unit:"1kg bag",  emoji:"🧅", prices:{"pak-n-save":1.99,"woolworths":2.29,"new-world":2.49} },
-        { id:24, name:"Garlic",                        category:"Vegetables",    unit:"per bulb", emoji:"🧄", prices:{"pak-n-save":0.79,"woolworths":0.99,"new-world":1.19} },
-        // ── Meat & Seafood ──
-        { id:25, name:"Beef Mince",                    category:"Meat & Seafood",unit:"500g",     emoji:"🥩", prices:{"pak-n-save":7.99,"woolworths":9.49,"new-world":10.99} },
-        { id:26, name:"Chicken Breast",                category:"Meat & Seafood",unit:"per kg",   emoji:"🍗", prices:{"pak-n-save":9.99,"woolworths":11.99,"new-world":12.99} },
-        { id:27, name:"Pork Sausages",                 category:"Meat & Seafood",unit:"500g",     emoji:"🌭", prices:{"pak-n-save":4.99,"woolworths":5.99,"new-world":6.49} },
-        { id:28, name:"Hoki Fish Fillets",             category:"Meat & Seafood",unit:"400g",     emoji:"🐟", prices:{"pak-n-save":6.99,"woolworths":7.99,"new-world":8.49} },
-        // ── Pantry ──
-        { id:29, name:"Pam's White Rice",              category:"Pantry",        unit:"2kg",      emoji:"🍚", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.49} },
-        { id:30, name:"Barilla Spaghetti",             category:"Pantry",        unit:"500g",     emoji:"🍝", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} }
-      ]
-    };
+  // ═══════════════════════════════════════════════════════════════
+  // CONFIG
+  // ═══════════════════════════════════════════════════════════════
 
-    // ── NZ Locations ─────────────────────────────────────────────────────────
-    const NZ_LOCATIONS = [
-      "Auckland, Auckland","Christchurch, Canterbury","Wellington, Wellington",
-      "Hamilton, Waikato","Tauranga, Bay of Plenty","Dunedin, Otago",
-      "Palmerston North, Manawatū","Napier, Hawke's Bay","Nelson, Nelson",
-      "Rotorua, Bay of Plenty","New Plymouth, Taranaki","Invercargill, Southland",
-      "Whangarei, Northland","Gisborne, Gisborne","Blenheim, Marlborough",
-      "Queenstown, Otago","Timaru, Canterbury","Hastings, Hawke's Bay",
-      "Levin, Manawatū","Masterton, Wairarapa"
-    ];
+  // Point this at your Node.js server.
+  // Locally: http://localhost:3000
+  // After deploying your backend: replace with your live URL.
+  const API_URL = "http://localhost:3000";
 
-    // ── Backend URL ───────────────────────────────────────────────────────────
-    // When running locally this points to your Node.js server.
-    // When you deploy to Vercel you'll update this to your backend's live URL.
-    const API_URL = "http://localhost:3000";
+  // ═══════════════════════════════════════════════════════════════
+  // STATIC DATA
+  // Static prices are the fallback when the backend is unreachable.
+  // When the backend IS reachable, livePrices overrides these.
+  // ═══════════════════════════════════════════════════════════════
 
-    // ── State ─────────────────────────────────────────────────────────────────
-    let query = "";
-    let activeCategory = "All";
-    let selectedProduct = null;
-    let currentLocation = "Auckland, Auckland";
+  const STORES = [
+    { id: "pak-n-save", name: "Pak'nSave", dotClass: "pak"  },
+    { id: "woolworths", name: "Woolworths", dotClass: "wool" },
+    { id: "new-world",  name: "New World",  dotClass: "nw"   },
+  ];
 
-    // ── Elements ─────────────────────────────────────────────────────────────
-    const searchInput   = document.getElementById("search-input");
-    const clearBtn      = document.getElementById("clear-btn");
-    const productGrid   = document.getElementById("product-grid");
-    const emptyState    = document.getElementById("empty-state");
-    const emptyQuery    = document.getElementById("empty-query");
-    const resultsCount  = document.getElementById("results-count");
-    const resultsLabel  = document.getElementById("results-label");
-    const categoryBar   = document.querySelector(".category-bar");
-    const compSection   = document.getElementById("comparison-section");
-    const compEmoji     = document.getElementById("comp-emoji");
-    const compName      = document.getElementById("comp-name");
-    const compMeta      = document.getElementById("comp-meta");
-    const storeCols     = document.getElementById("store-cols");
-    const compClose     = document.getElementById("comparison-close");
+  const PRODUCTS = [
+    // Dairy & Eggs
+    { id:1,  name:"Anchor Full Cream Milk",       category:"Dairy & Eggs",   unit:"2L",          emoji:"🥛", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.19} },
+    { id:2,  name:"Anchor Trim Milk",             category:"Dairy & Eggs",   unit:"2L",          emoji:"🥛", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.19} },
+    { id:3,  name:"Free Range Eggs",              category:"Dairy & Eggs",   unit:"12 pack",     emoji:"🥚", prices:{"pak-n-save":7.49,"woolworths":8.49,"new-world":8.99} },
+    { id:4,  name:"Mainland Butter",              category:"Dairy & Eggs",   unit:"500g",        emoji:"🧈", prices:{"pak-n-save":5.99,"woolworths":6.49,"new-world":6.79} },
+    { id:5,  name:"Tasty Cheddar Cheese",         category:"Dairy & Eggs",   unit:"500g",        emoji:"🧀", prices:{"pak-n-save":6.49,"woolworths":7.49,"new-world":7.99} },
+    { id:6,  name:"Meadow Fresh Natural Yoghurt", category:"Dairy & Eggs",   unit:"1kg",         emoji:"🫙", prices:{"pak-n-save":4.99,"woolworths":5.49,"new-world":5.99} },
+    // Bakery
+    { id:7,  name:"Tip Top White Sandwich Bread", category:"Bakery",         unit:"700g",        emoji:"🍞", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.59} },
+    { id:8,  name:"Vogel's Mixed Grain Bread",    category:"Bakery",         unit:"720g",        emoji:"🍞", prices:{"pak-n-save":4.49,"woolworths":5.29,"new-world":5.49} },
+    { id:9,  name:"Bazaar Wraps",                 category:"Bakery",         unit:"8 pack",      emoji:"🫓", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.79} },
+    // Breakfast
+    { id:10, name:"Weet-Bix Cereal",              category:"Breakfast",      unit:"750g",        emoji:"🥣", prices:{"pak-n-save":4.49,"woolworths":5.29,"new-world":5.49} },
+    { id:11, name:"Sanitarium Up&Go",             category:"Breakfast",      unit:"6 pack",      emoji:"🥤", prices:{"pak-n-save":5.99,"woolworths":6.99,"new-world":7.29} },
+    { id:12, name:"Rolled Oats",                  category:"Breakfast",      unit:"1kg",         emoji:"🌾", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
+    // Fruit
+    { id:13, name:"Royal Gala Apples",            category:"Fruit",          unit:"per kg",      emoji:"🍎", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.99} },
+    { id:14, name:"Bananas",                      category:"Fruit",          unit:"per kg",      emoji:"🍌", prices:{"pak-n-save":1.99,"woolworths":2.49,"new-world":2.69} },
+    { id:15, name:"Strawberries",                 category:"Fruit",          unit:"250g punnet", emoji:"🍓", prices:{"pak-n-save":3.99,"woolworths":4.49,"new-world":4.99} },
+    { id:16, name:"Navel Oranges",                category:"Fruit",          unit:"per kg",      emoji:"🍊", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.79} },
+    // Vegetables
+    { id:17, name:"Carrots",                      category:"Vegetables",     unit:"1kg bag",     emoji:"🥕", prices:{"pak-n-save":1.49,"woolworths":1.99,"new-world":2.19} },
+    { id:18, name:"Baby Spinach",                 category:"Vegetables",     unit:"120g",        emoji:"🥬", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
+    { id:19, name:"Broccoli",                     category:"Vegetables",     unit:"per head",    emoji:"🥦", prices:{"pak-n-save":2.49,"woolworths":2.79,"new-world":2.99} },
+    { id:20, name:"Agria Potatoes",               category:"Vegetables",     unit:"2kg bag",     emoji:"🥔", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.49} },
+    { id:21, name:"Iceberg Lettuce",              category:"Vegetables",     unit:"per head",    emoji:"🥗", prices:{"pak-n-save":1.99,"woolworths":2.49,"new-world":2.79} },
+    { id:22, name:"Tomatoes",                     category:"Vegetables",     unit:"per kg",      emoji:"🍅", prices:{"pak-n-save":3.99,"woolworths":4.49,"new-world":4.99} },
+    { id:23, name:"Brown Onions",                 category:"Vegetables",     unit:"1kg bag",     emoji:"🧅", prices:{"pak-n-save":1.99,"woolworths":2.29,"new-world":2.49} },
+    { id:24, name:"Garlic",                       category:"Vegetables",     unit:"per bulb",    emoji:"🧄", prices:{"pak-n-save":0.79,"woolworths":0.99,"new-world":1.19} },
+    // Meat & Seafood
+    { id:25, name:"Beef Mince",                   category:"Meat & Seafood", unit:"500g",        emoji:"🥩", prices:{"pak-n-save":7.99,"woolworths":9.49,"new-world":10.99} },
+    { id:26, name:"Chicken Breast",               category:"Meat & Seafood", unit:"per kg",      emoji:"🍗", prices:{"pak-n-save":9.99,"woolworths":11.99,"new-world":12.99} },
+    { id:27, name:"Pork Sausages",                category:"Meat & Seafood", unit:"500g",        emoji:"🌭", prices:{"pak-n-save":4.99,"woolworths":5.99,"new-world":6.49} },
+    { id:28, name:"Hoki Fish Fillets",            category:"Meat & Seafood", unit:"400g",        emoji:"🐟", prices:{"pak-n-save":6.99,"woolworths":7.99,"new-world":8.49} },
+    // Pantry
+    { id:29, name:"Pam's White Rice",             category:"Pantry",         unit:"2kg",         emoji:"🍚", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.49} },
+    { id:30, name:"Barilla Spaghetti",            category:"Pantry",         unit:"500g",        emoji:"🍝", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
+  ];
 
-    // Location elements
-    const locationBar       = document.getElementById("location-bar");
-    const locationDisplay   = document.getElementById("location-display");
-    const locationInput     = document.getElementById("location-input");
-    const locationEditBtn   = document.getElementById("location-edit-btn");
-    const locationSuggestions = document.getElementById("location-suggestions");
+  const NZ_LOCATIONS = [
+    "Auckland, Auckland", "Wellington, Wellington", "Christchurch, Canterbury",
+    "Hamilton, Waikato", "Tauranga, Bay of Plenty", "Dunedin, Otago",
+    "Palmerston North, Manawatū", "Napier, Hawke's Bay", "Nelson, Nelson",
+    "Rotorua, Bay of Plenty", "New Plymouth, Taranaki", "Invercargill, Southland",
+    "Whangarei, Northland", "Gisborne, Gisborne", "Blenheim, Marlborough",
+    "Queenstown, Otago", "Timaru, Canterbury", "Hastings, Hawke's Bay",
+    "Levin, Manawatū", "Masterton, Wairarapa",
+  ];
 
-    // ── Location Logic ────────────────────────────────────────────────────────
-    function showSuggestions(val) {
-      const filtered = NZ_LOCATIONS.filter(l => l.toLowerCase().includes(val.toLowerCase()));
-      if (!filtered.length) { locationSuggestions.classList.remove("visible"); return; }
-      locationSuggestions.innerHTML = filtered.slice(0, 6).map(l => `
-        <div class="location-suggestion" role="option" data-loc="${l}">
-          <span class="suggestion-dot"></span>${l}
-        </div>`).join("");
-      locationSuggestions.classList.add("visible");
+  // ═══════════════════════════════════════════════════════════════
+  // STATE
+  // ═══════════════════════════════════════════════════════════════
+
+  let query           = "";
+  let activeCategory  = "All";
+  let selectedProduct = null;
+  let currentLocation = "Auckland, Auckland";
+
+  // livePrices[product_id][store_id] = price (number)
+  // Populated by fetchAllPrices(). Empty = use static fallback.
+  let livePrices = {};
+
+  // ═══════════════════════════════════════════════════════════════
+  // ELEMENT REFS
+  // ═══════════════════════════════════════════════════════════════
+
+  const searchInput         = document.getElementById("search-input");
+  const clearBtn            = document.getElementById("clear-btn");
+  const productGrid         = document.getElementById("product-grid");
+  const emptyState          = document.getElementById("empty-state");
+  const emptyQuery          = document.getElementById("empty-query");
+  const resultsCount        = document.getElementById("results-count");
+  const resultsLabel        = document.getElementById("results-label");
+  const categoryBar         = document.getElementById("category-bar");
+  const gridLoading         = document.getElementById("grid-loading");
+  const loadingText         = document.getElementById("loading-text");
+  const compSection         = document.getElementById("comparison-section");
+  const compEmoji           = document.getElementById("comp-emoji");
+  const compName            = document.getElementById("comp-name");
+  const compMeta            = document.getElementById("comp-meta");
+  const storeCols           = document.getElementById("store-cols");
+  const compClose           = document.getElementById("comparison-close");
+  const locationBar         = document.getElementById("location-bar");
+  const locationDisplay     = document.getElementById("location-display");
+  const locationInput       = document.getElementById("location-input");
+  const locationEditBtn     = document.getElementById("location-edit-btn");
+  const locationSuggestions = document.getElementById("location-suggestions");
+
+  // ═══════════════════════════════════════════════════════════════
+  // PRICE HELPERS
+  // ═══════════════════════════════════════════════════════════════
+
+  // Always call this instead of product.prices[storeId] directly.
+  // Returns the live backend price when available, static price as fallback.
+  function getPrice(product, storeId) {
+    if (livePrices[product.id] && livePrices[product.id][storeId] !== undefined) {
+      return livePrices[product.id][storeId];
+    }
+    return product.prices[storeId];
+  }
+
+  function bestStoreForProduct(product) {
+    let bestStore = null, bestP = Infinity;
+    STORES.forEach(s => {
+      const p = getPrice(product, s.id);
+      if (p < bestP) { bestP = p; bestStore = s; }
+    });
+    return { store: bestStore, price: bestP };
+  }
+
+  function fmt(n) { return "$" + Number(n).toFixed(2); }
+
+  // ═══════════════════════════════════════════════════════════════
+  // LIVE PRICE FETCHING
+  // Fires all 30 product requests in parallel, rebuilds livePrices,
+  // then re-renders everything.
+  // ═══════════════════════════════════════════════════════════════
+
+  async function fetchAllPrices(location) {
+    // Show spinner
+    gridLoading.classList.add("visible");
+    loadingText.textContent = `Loading prices for ${location.split(",")[0]}…`;
+    productGrid.style.opacity       = "0.45";
+    productGrid.style.pointerEvents = "none";
+
+    try {
+      const responses = await Promise.all(
+        PRODUCTS.map(p =>
+          fetch(`${API_URL}/api/prices/${p.id}?location=${encodeURIComponent(location)}`)
+            .then(r => r.json())
+            .catch(() => null)
+        )
+      );
+
+      const newPrices = {};
+
+      responses.forEach((data, i) => {
+        const product = PRODUCTS[i];
+        newPrices[product.id] = {};
+
+        if (data && data.prices && data.prices.length > 0) {
+          // Use backend prices
+          data.prices.forEach(row => {
+            newPrices[product.id][row.store_id] = Number(row.price);
+          });
+        }
+
+        // Fill any missing stores with static fallback
+        STORES.forEach(store => {
+          if (newPrices[product.id][store.id] === undefined) {
+            newPrices[product.id][store.id] = product.prices[store.id];
+          }
+        });
+      });
+
+      livePrices = newPrices;
+
+    } catch (err) {
+      console.warn("Backend unreachable — using static prices as fallback.");
     }
 
-    function setLocation(loc) {
-      currentLocation = loc;
-      locationDisplay.textContent = loc;
-      locationInput.value = "";
+    // Hide spinner, restore grid
+    gridLoading.classList.remove("visible");
+    productGrid.style.opacity       = "1";
+    productGrid.style.pointerEvents = "auto";
+
+    // Re-render with fresh prices
+    render();
+    if (selectedProduct) renderComparison(selectedProduct);
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // LOCATION
+  // ═══════════════════════════════════════════════════════════════
+
+  function showSuggestions(val) {
+    const matches = NZ_LOCATIONS.filter(l =>
+      l.toLowerCase().includes(val.toLowerCase())
+    ).slice(0, 6);
+
+    if (!matches.length) {
+      locationSuggestions.classList.remove("visible");
+      return;
+    }
+
+    locationSuggestions.innerHTML = matches.map(l => `
+      <div class="location-suggestion" role="option" data-loc="${l}">
+        <span class="suggestion-dot"></span>${l}
+      </div>`).join("");
+
+    locationSuggestions.classList.add("visible");
+  }
+
+  function setLocation(loc) {
+    if (!loc) return;
+    currentLocation = loc;
+    locationDisplay.textContent = loc;
+    locationInput.value = "";
+    locationBar.classList.remove("editing");
+    locationSuggestions.classList.remove("visible");
+    locationEditBtn.textContent = "Change";
+    // Re-fetch prices for the new city
+    fetchAllPrices(loc);
+  }
+
+  locationEditBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    if (locationBar.classList.contains("editing")) {
+      setLocation(locationInput.value.trim() || currentLocation);
+    } else {
+      locationBar.classList.add("editing");
+      locationInput.value = currentLocation;
+      locationEditBtn.textContent = "Save";
+      locationInput.focus();
+      locationInput.select();
+      showSuggestions(currentLocation);
+    }
+  });
+
+  locationInput.addEventListener("input", () => showSuggestions(locationInput.value));
+
+  locationInput.addEventListener("keydown", e => {
+    if (e.key === "Enter")  setLocation(locationInput.value.trim() || currentLocation);
+    if (e.key === "Escape") setLocation(currentLocation);
+  });
+
+  locationSuggestions.addEventListener("click", e => {
+    const item = e.target.closest(".location-suggestion");
+    if (item) setLocation(item.dataset.loc);
+  });
+
+  document.addEventListener("click", e => {
+    if (!locationBar.contains(e.target)) {
       locationBar.classList.remove("editing");
       locationSuggestions.classList.remove("visible");
       locationEditBtn.textContent = "Change";
     }
+  });
 
-    locationEditBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (locationBar.classList.contains("editing")) {
-        setLocation(locationInput.value.trim() || currentLocation);
+  // ═══════════════════════════════════════════════════════════════
+  // CATEGORY PILLS  (built dynamically from product list)
+  // ═══════════════════════════════════════════════════════════════
+
+  const categories = ["All", ...new Set(PRODUCTS.map(p => p.category))].sort((a, b) => a === "All" ? -1 : 0);
+
+  categories.forEach(cat => {
+    if (cat === "All") return; // "All" pill already in HTML
+    const btn = document.createElement("button");
+    btn.className    = "pill";
+    btn.dataset.category = cat;
+    btn.textContent  = cat;
+    categoryBar.appendChild(btn);
+  });
+
+  categoryBar.addEventListener("click", e => {
+    const pill = e.target.closest(".pill");
+    if (!pill) return;
+    activeCategory = pill.dataset.category;
+    document.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p === pill));
+    render();
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // SEARCH
+  // ═══════════════════════════════════════════════════════════════
+
+  searchInput.addEventListener("input", () => {
+    query = searchInput.value.trim();
+    clearBtn.classList.toggle("visible", query.length > 0);
+    render();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    query = "";
+    clearBtn.classList.remove("visible");
+    searchInput.focus();
+    render();
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // FILTERING
+  // ═══════════════════════════════════════════════════════════════
+
+  function getFiltered() {
+    return PRODUCTS.filter(p => {
+      const matchCat = activeCategory === "All" || p.category === activeCategory;
+      const matchQ   = !query
+        || p.name.toLowerCase().includes(query.toLowerCase())
+        || p.category.toLowerCase().includes(query.toLowerCase());
+      return matchCat && matchQ;
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // RENDER: PRODUCT CARDS
+  // ═══════════════════════════════════════════════════════════════
+
+  function renderCards(products) {
+    productGrid.innerHTML = "";
+
+    products.forEach((p, i) => {
+      const { store, price } = bestStoreForProduct(p);
+
+      const card = document.createElement("div");
+      card.className = "product-card" + (selectedProduct?.id === p.id ? " selected" : "");
+      card.setAttribute("role", "listitem");
+      card.style.animationDelay = `${i * 28}ms`;
+
+      card.innerHTML = `
+        <span class="card-emoji">${p.emoji}</span>
+        <p class="card-category">${p.category}</p>
+        <p class="card-name">${p.name}</p>
+        <p class="card-unit">${p.unit}</p>
+        <div class="card-price-row">
+          <span class="card-best-price">${fmt(price)}</span>
+          <span class="card-best-label ${store.dotClass}">${store.name}</span>
+        </div>
+      `;
+
+      card.addEventListener("click", () => selectProduct(p));
+      productGrid.appendChild(card);
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // RENDER: COMPARISON PANEL
+  // ═══════════════════════════════════════════════════════════════
+
+  function renderComparison(product) {
+    compEmoji.textContent = product.emoji;
+    compName.textContent  = product.name;
+    compMeta.textContent  = `${product.unit} · ${product.category}`;
+
+    const prices = STORES.map(s => ({ store: s, price: getPrice(product, s.id) }));
+    const minP   = Math.min(...prices.map(x => x.price));
+    const maxP   = Math.max(...prices.map(x => x.price));
+    const saving = (maxP - minP).toFixed(2);
+
+    storeCols.innerHTML = prices.map(({ store, price }) => {
+      const isBest = price === minP;
+      return `
+        <div class="store-col ${isBest ? "best-price" : ""}">
+          <span class="store-col-dot ${store.dotClass}"></span>
+          <p class="store-col-name">${store.name}</p>
+          <span class="store-col-price">${fmt(price)}</span>
+          ${isBest ? `
+            <span class="best-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Best Price
+            </span>
+            <span class="you-save">You save $${saving}</span>
+          ` : ""}
+        </div>`;
+    }).join("");
+
+    compSection.classList.add("visible");
+    compSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // SELECT / DESELECT PRODUCT
+  // ═══════════════════════════════════════════════════════════════
+
+  function selectProduct(product) {
+    // Clicking the same card again deselects it
+    selectedProduct = selectedProduct?.id === product.id ? null : product;
+    render();
+    if (selectedProduct) {
+      renderComparison(selectedProduct);
+    } else {
+      compSection.classList.remove("visible");
+    }
+  }
+
+  compClose.addEventListener("click", () => {
+    selectedProduct = null;
+    compSection.classList.remove("visible");
+    render();
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  // SUBMIT A PRICE
+  // ═══════════════════════════════════════════════════════════════
+
+  document.getElementById("submit-btn").addEventListener("click", async () => {
+    const storeVal = document.getElementById("submit-store").value;
+    const priceVal = parseFloat(document.getElementById("submit-price").value);
+    const feedback = document.getElementById("submit-feedback");
+    const btn      = document.getElementById("submit-btn");
+
+    feedback.textContent = "";
+    feedback.className   = "submit-feedback";
+
+    if (!storeVal)               { feedback.textContent = "Please select a store.";       feedback.classList.add("error"); return; }
+    if (!priceVal || priceVal <= 0) { feedback.textContent = "Please enter a valid price."; feedback.classList.add("error"); return; }
+    if (!selectedProduct)        return;
+
+    const [store_id, store_name] = storeVal.split("|");
+    btn.disabled    = true;
+    btn.textContent = "Submitting…";
+
+    try {
+      const res  = await fetch(`${API_URL}/api/submit-price`, {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          product_id:   selectedProduct.id,
+          product_name: selectedProduct.name,
+          store_id, store_name,
+          price:    priceVal,
+          location: currentLocation,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        feedback.textContent = "✓ Thanks! Your price has been saved.";
+        feedback.classList.add("success");
+        document.getElementById("submit-store").value = "";
+        document.getElementById("submit-price").value = "";
+        // Refresh live prices so the card and panel update immediately
+        fetchAllPrices(currentLocation);
       } else {
-        locationBar.classList.add("editing");
-        locationInput.value = currentLocation;
-        locationInput.focus();
-        locationInput.select();
-        locationEditBtn.textContent = "Save";
-        showSuggestions(currentLocation);
-      }
-    });
-
-    locationInput.addEventListener("input", () => showSuggestions(locationInput.value));
-
-    locationInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") setLocation(locationInput.value.trim() || currentLocation);
-      if (e.key === "Escape") setLocation(currentLocation);
-    });
-
-    locationSuggestions.addEventListener("click", (e) => {
-      const item = e.target.closest(".location-suggestion");
-      if (item) setLocation(item.dataset.loc);
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!locationBar.contains(e.target)) {
-        locationBar.classList.remove("editing");
-        locationSuggestions.classList.remove("visible");
-        locationEditBtn.textContent = "Change";
-      }
-    });
-
-    // ── Category pills ────────────────────────────────────────────────────────
-    const cats = ["All", ...new Set(DATA.products.map(p => p.category))].sort((a,b) => a==="All"?-1:0);
-    cats.forEach(cat => {
-      if (cat === "All") return;
-      const btn = document.createElement("button");
-      btn.className = "pill";
-      btn.dataset.category = cat;
-      btn.textContent = cat;
-      categoryBar.appendChild(btn);
-    });
-
-    categoryBar.addEventListener("click", e => {
-      const pill = e.target.closest(".pill");
-      if (!pill) return;
-      activeCategory = pill.dataset.category;
-      document.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p === pill));
-      render();
-    });
-
-    // ── Search ────────────────────────────────────────────────────────────────
-    searchInput.addEventListener("input", () => {
-      query = searchInput.value.trim();
-      clearBtn.classList.toggle("visible", query.length > 0);
-      render();
-    });
-
-    clearBtn.addEventListener("click", () => {
-      searchInput.value = "";
-      query = "";
-      clearBtn.classList.remove("visible");
-      searchInput.focus();
-      render();
-    });
-
-    // ── Helpers ───────────────────────────────────────────────────────────────
-    function fmt(n) { return "$" + n.toFixed(2); }
-
-    function getFiltered() {
-      return DATA.products.filter(p => {
-        const matchCat = activeCategory === "All" || p.category === activeCategory;
-        const matchQ   = !query || p.name.toLowerCase().includes(query.toLowerCase()) || p.category.toLowerCase().includes(query.toLowerCase());
-        return matchCat && matchQ;
-      });
-    }
-
-    function bestStoreForProduct(product) {
-      let bestStore = null, bestP = Infinity;
-      DATA.stores.forEach(s => {
-        const p = product.prices[s.id];
-        if (p < bestP) { bestP = p; bestStore = s; }
-      });
-      return { store: bestStore, price: bestP };
-    }
-
-    // ── Render cards ──────────────────────────────────────────────────────────
-    function renderCards(products) {
-      productGrid.innerHTML = "";
-      products.forEach((p, i) => {
-        const { store, price } = bestStoreForProduct(p);
-        const card = document.createElement("div");
-        card.className = "product-card" + (selectedProduct?.id === p.id ? " selected" : "");
-        card.setAttribute("role", "listitem");
-        card.style.animationDelay = `${i * 30}ms`;
-        card.innerHTML = `
-          <span class="card-emoji">${p.emoji}</span>
-          <p class="card-category">${p.category}</p>
-          <p class="card-name">${p.name}</p>
-          <p class="card-unit">${p.unit}</p>
-          <div class="card-price-row">
-            <span class="card-best-price">${fmt(price)}</span>
-            <span class="card-best-label ${store.dotClass}">${store.name}</span>
-          </div>
-        `;
-        card.addEventListener("click", () => selectProduct(p));
-        productGrid.appendChild(card);
-      });
-    }
-
-    // ── Render comparison ─────────────────────────────────────────────────────
-    function renderComparison(product) {
-      compEmoji.textContent = product.emoji;
-      compName.textContent  = product.name;
-      compMeta.textContent  = `${product.unit} · ${product.category}`;
-
-      const prices  = DATA.stores.map(s => ({ store: s, price: product.prices[s.id] }));
-      const minP    = Math.min(...prices.map(x => x.price));
-      const maxP    = Math.max(...prices.map(x => x.price));
-      const saving  = (maxP - minP).toFixed(2);
-
-      storeCols.innerHTML = prices.map(({ store, price }) => {
-        const isBest = price === minP;
-        return `
-          <div class="store-col ${isBest ? "best-price" : ""}">
-            <span class="store-col-dot ${store.dotClass}"></span>
-            <p class="store-col-name">${store.name}</p>
-            <span class="store-col-price">${fmt(price)}</span>
-            ${isBest ? `<span class="best-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Best Price</span>` : ""}
-            ${isBest ? `<span class="you-save">You save $${saving}</span>` : ""}
-          </div>`;
-      }).join("");
-
-      compSection.classList.add("visible");
-      compSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-
-    // ── Community prices ──────────────────────────────────────────────────────
-    async function fetchCommunityPrices(product) {
-      const box = document.getElementById("community-prices");
-      box.innerHTML = `<p class="community-loading">Loading community prices…</p>`;
-
-      try {
-        const res  = await fetch(`${API_URL}/api/prices/${product.id}?location=${encodeURIComponent(currentLocation)}`);
-        const data = await res.json();
-
-        if (!data.prices || data.prices.length === 0) {
-          box.innerHTML = `<p class="community-empty">No community prices yet for your area — be the first to submit one!</p>`;
-          return;
-        }
-
-        box.innerHTML = data.prices.map(p => {
-          // Format the date nicely: "3 Jun 2026"
-          const d = new Date(p.submitted_at);
-          const dateStr = d.toLocaleDateString("en-NZ", { day:"numeric", month:"short", year:"numeric" });
-          return `
-            <div class="community-row">
-              <span class="community-store">${p.store_name}</span>
-              <span class="community-price">$${Number(p.price).toFixed(2)}</span>
-              <span class="community-date">${dateStr}</span>
-            </div>`;
-        }).join("");
-
-      } catch (err) {
-        // If the backend isn't running, fail silently
-        box.innerHTML = `<p class="community-empty">Backend not connected — run your server to see community prices.</p>`;
-      }
-    }
-
-    // ── Submit a price ────────────────────────────────────────────────────────
-    document.getElementById("submit-btn").addEventListener("click", async () => {
-      const storeVal   = document.getElementById("submit-store").value;
-      const priceVal   = parseFloat(document.getElementById("submit-price").value);
-      const feedback   = document.getElementById("submit-feedback");
-      const btn        = document.getElementById("submit-btn");
-
-      // Clear previous feedback
-      feedback.textContent = "";
-      feedback.className   = "submit-feedback";
-
-      if (!storeVal) { feedback.textContent = "Please select a store."; feedback.classList.add("error"); return; }
-      if (!priceVal || priceVal <= 0) { feedback.textContent = "Please enter a valid price."; feedback.classList.add("error"); return; }
-      if (!selectedProduct) return;
-
-      const [store_id, store_name] = storeVal.split("|");
-
-      btn.disabled     = true;
-      btn.textContent  = "Submitting…";
-
-      try {
-        const res  = await fetch(`${API_URL}/api/submit-price`, {
-          method:  "POST",
-          headers: { "Content-Type": "application/json" },
-          body:    JSON.stringify({
-            product_id:   selectedProduct.id,
-            product_name: selectedProduct.name,
-            store_id,
-            store_name,
-            price:    priceVal,
-            location: currentLocation
-          })
-        });
-
-        const data = await res.json();
-
-        if (data.success) {
-          feedback.textContent = "✓ Thanks! Your price has been saved.";
-          feedback.classList.add("success");
-          document.getElementById("submit-store").value = "";
-          document.getElementById("submit-price").value = "";
-          // Refresh community prices to show the new submission
-          fetchCommunityPrices(selectedProduct);
-        } else {
-          feedback.textContent = data.error || "Something went wrong.";
-          feedback.classList.add("error");
-        }
-      } catch (err) {
-        feedback.textContent = "Can't reach the backend — is your server running?";
+        feedback.textContent = data.error || "Something went wrong.";
         feedback.classList.add("error");
       }
-
-      btn.disabled    = false;
-      btn.textContent = "Submit";
-    });
-
-    // ── Select product ────────────────────────────────────────────────────────
-    function selectProduct(product) {
-      selectedProduct = selectedProduct?.id === product.id ? null : product;
-      render();
-      if (selectedProduct) {
-        renderComparison(selectedProduct);
-        fetchCommunityPrices(selectedProduct);
-      }
+    } catch (err) {
+      feedback.textContent = "Can't reach the backend — is your server running?";
+      feedback.classList.add("error");
     }
 
-    compClose.addEventListener("click", () => {
-      selectedProduct = null;
-      compSection.classList.remove("visible");
-      render();
-    });
+    btn.disabled    = false;
+    btn.textContent = "Submit";
+  });
 
-    // ── Main render ───────────────────────────────────────────────────────────
-    function render() {
-      const filtered = getFiltered();
+  // ═══════════════════════════════════════════════════════════════
+  // MAIN RENDER
+  // ═══════════════════════════════════════════════════════════════
 
-      emptyState.style.display   = "none";
-      productGrid.style.display  = "grid";
-      resultsLabel.textContent   = query ? "Search Results" : activeCategory !== "All" ? activeCategory : "All Products";
-      resultsCount.textContent   = `${filtered.length} item${filtered.length !== 1 ? "s" : ""}`;
+  function render() {
+    const filtered = getFiltered();
 
-      if (filtered.length === 0) {
-        productGrid.style.display = "none";
-        emptyState.style.display  = "block";
-        emptyQuery.textContent    = query;
-        return;
-      }
+    emptyState.style.display  = "none";
+    productGrid.style.display = "grid";
+    resultsLabel.textContent  = query
+      ? "Search Results"
+      : activeCategory !== "All" ? activeCategory : "All Products";
+    resultsCount.textContent  = `${filtered.length} item${filtered.length !== 1 ? "s" : ""}`;
 
-      renderCards(filtered);
+    if (filtered.length === 0) {
+      productGrid.style.display = "none";
+      emptyState.style.display  = "block";
+      emptyQuery.textContent    = query;
+      return;
     }
 
-    // ── Init ──────────────────────────────────────────────────────────────────
-    render();
+    renderCards(filtered);
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // INIT
+  // Render immediately with static prices so the page is never blank,
+  // then fetch live backend prices in the background.
+  // ═══════════════════════════════════════════════════════════════
+
+  render();
+  fetchAllPrices(currentLocation);
+
   </script>
 </body>
 </html>
