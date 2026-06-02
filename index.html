@@ -1058,11 +1058,11 @@
     render();
   });
 
-  // ═══════════════════════════════════════════════════════════════
-  // SUBMIT A PRICE
+// ═══════════════════════════════════════════════════════════════
+  // SUBMIT A PRICE (Simulated UI-only Version)
   // ═══════════════════════════════════════════════════════════════
 
-  document.getElementById("submit-btn").addEventListener("click", async () => {
+  document.getElementById("submit-btn").addEventListener("click", () => {
     const storeVal = document.getElementById("submit-store").value;
     const priceVal = parseFloat(document.getElementById("submit-price").value);
     const feedback = document.getElementById("submit-feedback");
@@ -1071,82 +1071,32 @@
     feedback.textContent = "";
     feedback.className   = "submit-feedback";
 
-    if (!storeVal)               { feedback.textContent = "Please select a store.";       feedback.classList.add("error"); return; }
-    if (!priceVal || priceVal <= 0) { feedback.textContent = "Please enter a valid price."; feedback.classList.add("error"); return; }
-    if (!selectedProduct)        return;
+    // 1. Validation Checks (Keep them so the form feels real!)
+    if (!storeVal) { 
+      feedback.textContent = "Please select a store."; 
+      feedback.classList.add("error"); 
+      return; 
+    }
+    if (!priceVal || priceVal <= 0) { 
+      feedback.textContent = "Please enter a valid price."; 
+      feedback.classList.add("error"); 
+      return; 
+    }
 
-    const [store_id, store_name] = storeVal.split("|");
-    btn.disabled    = true;
+    // 2. Play a "Clicked" Button Effect & Show Success
+    btn.disabled = true;
     btn.textContent = "Submitting…";
 
-    try {
-      const res  = await fetch(`${API_URL}/api/submit-price`, {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          product_id:   selectedProduct.id,
-          product_name: selectedProduct.name,
-          store_id, store_name,
-          price:    priceVal,
-          location: currentLocation,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        feedback.textContent = "✓ Thanks! Your price has been saved.";
-        feedback.classList.add("success");
-        document.getElementById("submit-store").value = "";
-        document.getElementById("submit-price").value = "";
-        // Refresh live prices so the card and panel update immediately
-        fetchAllPrices(currentLocation);
-      } else {
-        feedback.textContent = data.error || "Something went wrong.";
-        feedback.classList.add("error");
-      }
-    } catch (err) {
-      feedback.textContent = "Can't reach the backend — is your server running?";
-      feedback.classList.add("error");
-    }
-
-    btn.disabled    = false;
-    btn.textContent = "Submit";
+    setTimeout(() => {
+      feedback.textContent = "✓ Thanks! Your price change proposal has been saved for review.";
+      feedback.classList.add("success");
+      
+      // Clear inputs
+      document.getElementById("submit-store").value = "";
+      document.getElementById("submit-price").value = "";
+      
+      // Reset button
+      btn.disabled = false;
+      btn.textContent = "Submit";
+    }, 800); // 800ms artificial delay makes it feel like it's processing!
   });
-
-  // ═══════════════════════════════════════════════════════════════
-  // MAIN RENDER
-  // ═══════════════════════════════════════════════════════════════
-
-  function render() {
-    const filtered = getFiltered();
-
-    emptyState.style.display  = "none";
-    productGrid.style.display = "grid";
-    resultsLabel.textContent  = query
-      ? "Search Results"
-      : activeCategory !== "All" ? activeCategory : "All Products";
-    resultsCount.textContent  = `${filtered.length} item${filtered.length !== 1 ? "s" : ""}`;
-
-    if (filtered.length === 0) {
-      productGrid.style.display = "none";
-      emptyState.style.display  = "block";
-      emptyQuery.textContent    = query;
-      return;
-    }
-
-    renderCards(filtered);
-  }
-
-  // ═══════════════════════════════════════════════════════════════
-  // INIT
-  // Render immediately with static prices so the page is never blank,
-  // then fetch live backend prices in the background.
-  // ═══════════════════════════════════════════════════════════════
-
-  render();
-  fetchAllPrices(currentLocation);
-
-  </script>
-</body>
-</html>
