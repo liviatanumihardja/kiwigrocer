@@ -548,11 +548,9 @@
 </head>
 <body>
 
-  <!-- ─── Header ──────────────────────────────────────────────── -->
   <header>
     <div class="header-inner">
 
-      <!-- Location bar -->
       <div class="location-bar" id="location-bar">
         <span class="location-pin" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -570,7 +568,6 @@
       <h1 class="app-name">Kiwi<em>Grocer</em></h1>
       <p class="header-sub">Helping Kiwis save money by comparing grocery prices near you.</p>
 
-      <!-- Search -->
       <div class="search-wrap">
         <span class="search-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -590,15 +587,12 @@
     </div>
   </header>
 
-  <!-- ─── Category pills ──────────────────────────────────────── -->
   <nav class="category-bar" id="category-bar" aria-label="Filter by category">
     <button class="pill active" data-category="All">All</button>
   </nav>
 
-  <!-- ─── Main ────────────────────────────────────────────────── -->
   <main>
 
-    <!-- Comparison panel (hidden until a card is clicked) -->
     <section id="comparison-section" aria-label="Price comparison">
       <p class="section-label">Price Comparison</p>
       <div class="comparison-card">
@@ -635,7 +629,6 @@
       </div>
     </section>
 
-    <!-- Product grid -->
     <section id="results-section">
       <p class="section-label" id="results-label">All Products</p>
       <div id="grid-loading">
@@ -657,15 +650,10 @@
   // CONFIG
   // ═══════════════════════════════════════════════════════════════
 
-  // Point this at your Node.js server.
-  // Locally: http://localhost:3000
-  // After deploying your backend: replace with your live URL.
- const API_URL = "";
+  const API_URL = "";
 
   // ═══════════════════════════════════════════════════════════════
   // STATIC DATA
-  // Static prices are the fallback when the backend is unreachable.
-  // When the backend IS reachable, livePrices overrides these.
   // ═══════════════════════════════════════════════════════════════
 
   const STORES = [
@@ -675,27 +663,22 @@
   ];
 
   const PRODUCTS = [
-    // Dairy & Eggs
     { id:1,  name:"Anchor Full Cream Milk",       category:"Dairy & Eggs",   unit:"2L",          emoji:"🥛", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.19} },
     { id:2,  name:"Anchor Trim Milk",             category:"Dairy & Eggs",   unit:"2L",          emoji:"🥛", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.19} },
     { id:3,  name:"Free Range Eggs",              category:"Dairy & Eggs",   unit:"12 pack",     emoji:"🥚", prices:{"pak-n-save":7.49,"woolworths":8.49,"new-world":8.99} },
     { id:4,  name:"Mainland Butter",              category:"Dairy & Eggs",   unit:"500g",        emoji:"🧈", prices:{"pak-n-save":5.99,"woolworths":6.49,"new-world":6.79} },
     { id:5,  name:"Tasty Cheddar Cheese",         category:"Dairy & Eggs",   unit:"500g",        emoji:"🧀", prices:{"pak-n-save":6.49,"woolworths":7.49,"new-world":7.99} },
     { id:6,  name:"Meadow Fresh Natural Yoghurt", category:"Dairy & Eggs",   unit:"1kg",         emoji:"🫙", prices:{"pak-n-save":4.99,"woolworths":5.49,"new-world":5.99} },
-    // Bakery
     { id:7,  name:"Tip Top White Sandwich Bread", category:"Bakery",         unit:"700g",        emoji:"🍞", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.59} },
     { id:8,  name:"Vogel's Mixed Grain Bread",    category:"Bakery",         unit:"720g",        emoji:"🍞", prices:{"pak-n-save":4.49,"woolworths":5.29,"new-world":5.49} },
     { id:9,  name:"Bazaar Wraps",                 category:"Bakery",         unit:"8 pack",      emoji:"🫓", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.79} },
-    // Breakfast
     { id:10, name:"Weet-Bix Cereal",              category:"Breakfast",      unit:"750g",        emoji:"🥣", prices:{"pak-n-save":4.49,"woolworths":5.29,"new-world":5.49} },
     { id:11, name:"Sanitarium Up&Go",             category:"Breakfast",      unit:"6 pack",      emoji:"🥤", prices:{"pak-n-save":5.99,"woolworths":6.99,"new-world":7.29} },
     { id:12, name:"Rolled Oats",                  category:"Breakfast",      unit:"1kg",         emoji:"🌾", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
-    // Fruit
     { id:13, name:"Royal Gala Apples",            category:"Fruit",          unit:"per kg",      emoji:"🍎", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.99} },
     { id:14, name:"Bananas",                      category:"Fruit",          unit:"per kg",      emoji:"🍌", prices:{"pak-n-save":1.99,"woolworths":2.49,"new-world":2.69} },
     { id:15, name:"Strawberries",                 category:"Fruit",          unit:"250g punnet", emoji:"🍓", prices:{"pak-n-save":3.99,"woolworths":4.49,"new-world":4.99} },
     { id:16, name:"Navel Oranges",                category:"Fruit",          unit:"per kg",      emoji:"🍊", prices:{"pak-n-save":2.99,"woolworths":3.49,"new-world":3.79} },
-    // Vegetables
     { id:17, name:"Carrots",                      category:"Vegetables",     unit:"1kg bag",     emoji:"🥕", prices:{"pak-n-save":1.49,"woolworths":1.99,"new-world":2.19} },
     { id:18, name:"Baby Spinach",                 category:"Vegetables",     unit:"120g",        emoji:"🥬", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
     { id:19, name:"Broccoli",                     category:"Vegetables",     unit:"per head",    emoji:"🥦", prices:{"pak-n-save":2.49,"woolworths":2.79,"new-world":2.99} },
@@ -704,12 +687,10 @@
     { id:22, name:"Tomatoes",                     category:"Vegetables",     unit:"per kg",      emoji:"🍅", prices:{"pak-n-save":3.99,"woolworths":4.49,"new-world":4.99} },
     { id:23, name:"Brown Onions",                 category:"Vegetables",     unit:"1kg bag",     emoji:"🧅", prices:{"pak-n-save":1.99,"woolworths":2.29,"new-world":2.49} },
     { id:24, name:"Garlic",                       category:"Vegetables",     unit:"per bulb",    emoji:"🧄", prices:{"pak-n-save":0.79,"woolworths":0.99,"new-world":1.19} },
-    // Meat & Seafood
     { id:25, name:"Beef Mince",                   category:"Meat & Seafood", unit:"500g",        emoji:"🥩", prices:{"pak-n-save":7.99,"woolworths":9.49,"new-world":10.99} },
     { id:26, name:"Chicken Breast",               category:"Meat & Seafood", unit:"per kg",      emoji:"🍗", prices:{"pak-n-save":9.99,"woolworths":11.99,"new-world":12.99} },
     { id:27, name:"Pork Sausages",                category:"Meat & Seafood", unit:"500g",        emoji:"🌭", prices:{"pak-n-save":4.99,"woolworths":5.99,"new-world":6.49} },
     { id:28, name:"Hoki Fish Fillets",            category:"Meat & Seafood", unit:"400g",        emoji:"🐟", prices:{"pak-n-save":6.99,"woolworths":7.99,"new-world":8.49} },
-    // Pantry
     { id:29, name:"Pam's White Rice",             category:"Pantry",         unit:"2kg",         emoji:"🍚", prices:{"pak-n-save":3.49,"woolworths":3.99,"new-world":4.49} },
     { id:30, name:"Barilla Spaghetti",            category:"Pantry",         unit:"500g",        emoji:"🍝", prices:{"pak-n-save":2.49,"woolworths":2.99,"new-world":3.29} },
   ];
@@ -732,9 +713,6 @@
   let activeCategory  = "All";
   let selectedProduct = null;
   let currentLocation = "Auckland, Auckland";
-
-  // livePrices[product_id][store_id] = price (number)
-  // Populated by fetchAllPrices(). Empty = use static fallback.
   let livePrices = {};
 
   // ═══════════════════════════════════════════════════════════════
@@ -767,8 +745,6 @@
   // PRICE HELPERS
   // ═══════════════════════════════════════════════════════════════
 
-  // Always call this instead of product.prices[storeId] directly.
-  // Returns the live backend price when available, static price as fallback.
   function getPrice(product, storeId) {
     if (livePrices[product.id] && livePrices[product.id][storeId] !== undefined) {
       return livePrices[product.id][storeId];
@@ -789,12 +765,9 @@
 
   // ═══════════════════════════════════════════════════════════════
   // LIVE PRICE FETCHING
-  // Fires all 30 product requests in parallel, rebuilds livePrices,
-  // then re-renders everything.
   // ═══════════════════════════════════════════════════════════════
 
   async function fetchAllPrices(location) {
-    // Show spinner
     gridLoading.classList.add("visible");
     loadingText.textContent = `Loading prices for ${location.split(",")[0]}…`;
     productGrid.style.opacity       = "0.45";
@@ -816,13 +789,11 @@
         newPrices[product.id] = {};
 
         if (data && data.prices && data.prices.length > 0) {
-          // Use backend prices
           data.prices.forEach(row => {
             newPrices[product.id][row.store_id] = Number(row.price);
           });
         }
 
-        // Fill any missing stores with static fallback
         STORES.forEach(store => {
           if (newPrices[product.id][store.id] === undefined) {
             newPrices[product.id][store.id] = product.prices[store.id];
@@ -836,12 +807,10 @@
       console.warn("Backend unreachable — using static prices as fallback.");
     }
 
-    // Hide spinner, restore grid
     gridLoading.classList.remove("visible");
     productGrid.style.opacity       = "1";
     productGrid.style.pointerEvents = "auto";
 
-    // Re-render with fresh prices
     render();
     if (selectedProduct) renderComparison(selectedProduct);
   }
@@ -876,7 +845,6 @@
     locationBar.classList.remove("editing");
     locationSuggestions.classList.remove("visible");
     locationEditBtn.textContent = "Change";
-    // Re-fetch prices for the new city
     fetchAllPrices(loc);
   }
 
@@ -915,13 +883,13 @@
   });
 
   // ═══════════════════════════════════════════════════════════════
-  // CATEGORY PILLS  (built dynamically from product list)
+  // CATEGORY PILLS
   // ═══════════════════════════════════════════════════════════════
 
   const categories = ["All", ...new Set(PRODUCTS.map(p => p.category))].sort((a, b) => a === "All" ? -1 : 0);
 
   categories.forEach(cat => {
-    if (cat === "All") return; // "All" pill already in HTML
+    if (cat === "All") return;
     const btn = document.createElement("button");
     btn.className    = "pill";
     btn.dataset.category = cat;
@@ -1042,7 +1010,6 @@
   // ═══════════════════════════════════════════════════════════════
 
   function selectProduct(product) {
-    // Clicking the same card again deselects it
     selectedProduct = selectedProduct?.id === product.id ? null : product;
     render();
     if (selectedProduct) {
@@ -1058,7 +1025,7 @@
     render();
   });
 
-// ═══════════════════════════════════════════════════════════════
+  // ═══════════════════════════════════════════════════════════════
   // SUBMIT A PRICE (Simulated UI-only Version)
   // ═══════════════════════════════════════════════════════════════
 
@@ -1071,7 +1038,6 @@
     feedback.textContent = "";
     feedback.className   = "submit-feedback";
 
-    // 1. Validation Checks (Keep them so the form feels real!)
     if (!storeVal) { 
       feedback.textContent = "Please select a store."; 
       feedback.classList.add("error"); 
@@ -1083,7 +1049,6 @@
       return; 
     }
 
-    // 2. Play a "Clicked" Button Effect & Show Success
     btn.disabled = true;
     btn.textContent = "Submitting…";
 
@@ -1091,12 +1056,45 @@
       feedback.textContent = "✓ Thanks! Your price change proposal has been saved for review.";
       feedback.classList.add("success");
       
-      // Clear inputs
       document.getElementById("submit-store").value = "";
       document.getElementById("submit-price").value = "";
       
-      // Reset button
       btn.disabled = false;
       btn.textContent = "Submit";
-    }, 800); // 800ms artificial delay makes it feel like it's processing!
+    }, 800); 
   });
+
+  // ═══════════════════════════════════════════════════════════════
+  // MAIN RENDER
+  // ═══════════════════════════════════════════════════════════════
+
+  function render() {
+    const filtered = getFiltered();
+
+    emptyState.style.display  = "none";
+    productGrid.style.display = "grid";
+    resultsLabel.textContent  = query
+      ? "Search Results"
+      : activeCategory !== "All" ? activeCategory : "All Products";
+    resultsCount.textContent  = `${filtered.length} item${filtered.length !== 1 ? "s" : ""}`;
+
+    if (filtered.length === 0) {
+      productGrid.style.display = "none";
+      emptyState.style.display  = "block";
+      emptyQuery.textContent    = query;
+      return;
+    }
+
+    renderCards(filtered);
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // INIT
+  // ═══════════════════════════════════════════════════════════════
+
+  render();
+  fetchAllPrices(currentLocation);
+
+  </script>
+</body>
+</html>
