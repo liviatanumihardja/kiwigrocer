@@ -834,7 +834,7 @@
     render();
     if (selectedProduct) renderComparison(selectedProduct);
   }
-  
+
   // ═══════════════════════════════════════════════════════════════
   // LOCATION
   // ═══════════════════════════════════════════════════════════════
@@ -917,11 +917,16 @@
     categoryBar.appendChild(btn);
   });
 
-  categoryBar.addEventListener("click", e => {
+ categoryBar.addEventListener("click", e => {
     const pill = e.target.closest(".pill");
     if (!pill) return;
     activeCategory = pill.dataset.category;
     document.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p === pill));
+    
+    // 👇 NEW: Auto-close the comparison panel when changing pages/categories
+    selectedProduct = null;
+    compSection.classList.remove("visible");
+
     render();
   });
 
@@ -1029,8 +1034,14 @@
   // SELECT / DESELECT PRODUCT
   // ═══════════════════════════════════════════════════════════════
 
-  function selectProduct(product) {
+function selectProduct(product) {
     selectedProduct = selectedProduct?.id === product.id ? null : product;
+    
+    // 👇 NEW: Always wipe old feedback messages when switching between cards
+    const feedback = document.getElementById("submit-feedback");
+    feedback.textContent = "";
+    feedback.className   = "submit-feedback";
+
     render();
     if (selectedProduct) {
       renderComparison(selectedProduct);
@@ -1042,6 +1053,12 @@
   compClose.addEventListener("click", () => {
     selectedProduct = null;
     compSection.classList.remove("visible");
+    
+    // 👇 NEW: Reset the submission form feedback when closing
+    const feedback = document.getElementById("submit-feedback");
+    feedback.textContent = "";
+    feedback.className   = "submit-feedback";
+    
     render();
   });
 
